@@ -1,0 +1,26 @@
+{
+  "name": "bubble-sort-algorithm",
+  "version": "0.0.1",
+  "description": "Bubble sort algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolasLeRoux/bubble-sort-algorithm.git"
+  },
+  "keywords": [
+    "bubble",
+    "sort"
+  ],
+  "author": {
+    "name": "Nicolas Le Roux",
+    "email": "mr.leroux.nicolas+bubble-sort-algorithm@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NicolasLeRoux/bubble-sort-algorithm/issues"
+  },
+  "homepage": "https://github.com/NicolasLeRoux/bubble-sort-algorithm#readme"
+}
