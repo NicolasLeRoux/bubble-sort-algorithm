@@ -4,8 +4,11 @@
   "description": "Bubble sort algorithm",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/mocha/bin/mocha test.js"
   },
+  "pre-commit": [
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NicolasLeRoux/bubble-sort-algorithm.git"
@@ -22,5 +25,10 @@
   "bugs": {
     "url": "https://github.com/NicolasLeRoux/bubble-sort-algorithm/issues"
   },
-  "homepage": "https://github.com/NicolasLeRoux/bubble-sort-algorithm#readme"
+  "homepage": "https://github.com/NicolasLeRoux/bubble-sort-algorithm#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
+    "pre-commit": "^1.2.2"
+  }
 }
