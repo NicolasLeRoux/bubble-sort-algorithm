@@ -1,44 +1,53 @@
 'use strict';
 
-/*
-module.exports = function* () {
-	yield 1;
-	yield 2;
-	yield 3;
-};
-*/
+var generator = function* (array, comparator) {
+	let clone = array.slice(0);
 
-//console.log("Hello wolrd !!!");
+	for (let i = 0, length_i = clone.length; i < length_i; i++) {
+		let hasChange = false;
+		for (let j = 0, length_j = clone.length - 1; j < length_j; j++) {
+			if (comparator(clone[j], clone[j+1])) {
+				let tmp = clone[j];
+				clone[j] = clone[j+1];
+				clone[j+1] = tmp;
+				hasChange = true;
+			}
+
+			yield clone.slice(0);
+		}
+
+		if (!hasChange) {
+			break;
+		}
+	}
+};
+
+var defaultComparator = function (itemA, itemB) {
+	return itemA > itemB;
+};
 
 module.exports = class BubbleSort {
 	constructor(array, comparator) {
 		this._array = array;
-		this._comparator = comparator;
-		this._result = [];
+		this._comparator = comparator || defaultComparator;
+		this._steps = [];
 	}
 
 	compute() {
-		let clone = this._array.slice(0);
+		var genObj = generator(this._array, this._comparator);
 
-		for (let i = 0, length_i = clone.length; i < length_i; i++) {
-			for (let j = 0, length_j = clone.length - 1; j < length_j; j++) {
-				if (clone[j] > clone[j+1]) {
-					let tmp = clone[j];
-					clone[j] = clone[j+1];
-					clone[j+1] = tmp;
-				}
-			}
-		}
-
-		this._result = clone;
+		this._steps = [...genObj];
 	}
 
 	next() {
-		return {};
+		if (!this._genObj) {
+			this._genObj = generator(this._array, this._comparator);
+		}
+		return this._genObj.next();
 	}
 
 	getStep(no) {
-		return no;
+		return this._steps[no];
 	}
 
 	get array() {
@@ -46,6 +55,10 @@ module.exports = class BubbleSort {
 	}
 
 	get result() {
-		return this._result;
+		return this._steps[this._steps.length - 1];
+	}
+
+	get steps() {
+		return this._steps;
 	}
 };
