@@ -17,7 +17,10 @@ const generator = function* generator(array, comparator) {
 				hasChange = true;
 			}
 
-			yield clone.slice(0);
+			yield {
+				array: clone.slice(0),
+				selected: j + 1
+			};
 		}
 
 		if (!hasChange) {
@@ -47,6 +50,7 @@ module.exports = class BubbleSort {
 		if (!this._genObj) {
 			this._genObj = generator(this._array, this._comparator);
 		}
+
 		return this._genObj.next();
 	}
 
@@ -59,7 +63,9 @@ module.exports = class BubbleSort {
 	}
 
 	get result() {
-		return this._steps[this._steps.length - 1];
+		const lastStep = this._steps[this._steps.length - 1];
+
+		return lastStep ? lastStep.array : undefined;
 	}
 
 	get steps() {

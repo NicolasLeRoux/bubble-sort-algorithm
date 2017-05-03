@@ -38,16 +38,25 @@ describe("TODO B", function () {
 		sort.result.should.deep.equal([1, 2, 3, 4, 5, 6]);
 	});
 
-	it("Should...", function () {
-		sort.getStep(3).should.deep.equal([1, 3, 2, 5, 6, 4]);
+	it("Should 3..", function () {
+		sort.getStep(3).should.deep.equal({
+			array: [1, 3, 2, 5, 6, 4],
+			selected: 4
+		});
 	});
 
-	it("Should...", function () {
-		sort.getStep(6).should.deep.equal([1, 2, 3, 5, 4, 6]);
+	it("Should 6...", function () {
+		sort.getStep(6).should.deep.equal({
+			array: [1, 2, 3, 5, 4, 6],
+			selected: 2
+		});
 	});
 
-	it("Should...", function () {
-		sort.getStep(9).should.deep.equal([1, 2, 3, 4, 5, 6]);
+	it("Should 9...", function () {
+		sort.getStep(9).should.deep.equal({
+			array: [1, 2, 3, 4, 5, 6],
+			selected: 5
+		});
 	});
 
 	it("Should...", function () {
@@ -69,7 +78,10 @@ describe("TODO C", function () {
 
 	it("Should...", function () {
 		sort.next().should.deep.equal({
-			value: [1, 3, 6, 2, 5, 4],
+			value: {
+				array: [1, 3, 6, 2, 5, 4],
+				selected: 1
+			},
 			done: false
 		});
 	});
@@ -77,7 +89,10 @@ describe("TODO C", function () {
 	it("Should...", function () {
 		sort.next();
 		sort.next().should.deep.equal({
-			value: [1, 3, 6, 2, 5, 4],
+			value: {
+				array: [1, 3, 6, 2, 5, 4],
+				selected: 2
+			},
 			done: false
 		});
 	});
@@ -86,7 +101,10 @@ describe("TODO C", function () {
 		sort.next();
 		sort.next();
 		sort.next().should.deep.equal({
-			value: [1, 3, 2, 6, 5, 4],
+			value: {
+				array: [1, 3, 2, 6, 5, 4],
+				selected: 3
+			},
 			done: false
 		});
 	});
@@ -97,7 +115,10 @@ describe("TODO C", function () {
 		sort.next();
 		sort.next();
 		sort.next().should.deep.equal({
-			value: [1, 3, 2, 5, 4, 6],
+			value: {
+				array: [1, 3, 2, 5, 4, 6],
+				selected: 5
+			},
 			done: false
 		});
 	});

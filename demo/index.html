@@ -3,12 +3,90 @@
 	<meta charset="utf-8">
 	<title>Demo bubble-sort-algorithm</title>
 	<script src="index.js"></script>
+
+	<style>
+		#item-list {
+			display: flex;
+		}
+
+		.item {
+			flex: 1;
+			align-self: flex-end;
+		}
+
+		.item:not(:last-child) {
+			margin-right: 2px;
+		}
+
+		.item-value {
+			text-align: center;
+			margin: 0 0 10px 0;
+		}
+
+		.item-height {
+			background-color: gray;
+			height: calc(100% - 40px);
+		}
+
+		.selected .item-height {
+			background-color: red;
+		}
+	</style>
 </head>
 <body>
-	<h1>Hello</h1>
+	<h1>Demo bubble-sort-algorithm</h1>
+
+	<div id="item-list">
+	</div>
+
+	<template id="item-tmpl">
+		<div class="item">
+			<p class="item-value"></p>
+			<div class="item-height"></div>
+		</div>
+	</template>
+
+
+	<button id="next-btn">Next</button>
 
 	<script>
-		var bubbleSort = new BubbleSort([2, 6, 8, 4, 9, 5, 1, 3, 7]);
+		var showArray = function showArray(array, selected) {
+			var itemListNode = document.getElementById('item-list');
+
+			itemListNode.innerHTML = null;
+
+			for (var i = 0, length = array.length; i < length; i++) {
+				var tmpl = document.getElementById('item-tmpl').content.cloneNode(true),
+					value = array[i];
+				tmpl.querySelector('.item').dataset.numero = value;
+				tmpl.querySelector('.item').style.height = baseHeight + value * 10 + 'px';
+				tmpl.querySelector('.item-value').textContent = value;
+
+				if (i === selected) {
+					tmpl.querySelector('.item').classList.add('selected');
+				}
+
+				itemListNode.appendChild(tmpl);
+			}
+		}
+	</script>
+
+	<script>
+		document.getElementById('next-btn').onclick = () => {
+			var nextElem = bubbleSort.next();
+
+			if (!nextElem.done) {
+				showArray(nextElem.value.array, nextElem.value.selected);
+			}
+		}
+	</script>
+
+	<script>
+		var arrayToSort = [2, 6, 8, 4, 9, 5, 1, 3, 7],
+			bubbleSort = new BubbleSort(arrayToSort),
+			baseHeight = 50;
+
+		showArray(arrayToSort);
 
 		bubbleSort.compute();
 		console.info("Sorted array: ", bubbleSort.result);
