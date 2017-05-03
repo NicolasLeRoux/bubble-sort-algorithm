@@ -2,5 +2,15 @@
     "extends": "airbnb-base",
     "plugins": [
         "import"
-    ]
+    ],
+    "rules": {
+        "indent": [2, "tab"],
+        "no-tabs": 0,
+        "no-plusplus": ["error", {
+            "allowForLoopAfterthoughts": true
+        }],
+        "no-underscore-dangle": ["error", {
+            "allowAfterThis": true
+        }]
+    }
 }

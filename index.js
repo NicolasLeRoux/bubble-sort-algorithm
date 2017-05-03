@@ -1,15 +1,19 @@
+/**
+ * TODO...
+ */
+
 'use strict';
 
-var generator = function* (array, comparator) {
-	let clone = array.slice(0);
+const generator = function* generator(array, comparator) {
+	const clone = array.slice(0);
 
-	for (let i = 0, length_i = clone.length; i < length_i; i++) {
+	for (let i = 0, iLength = clone.length; i < iLength; i++) {
 		let hasChange = false;
-		for (let j = 0, length_j = clone.length - 1; j < length_j; j++) {
-			if (comparator(clone[j], clone[j+1])) {
-				let tmp = clone[j];
-				clone[j] = clone[j+1];
-				clone[j+1] = tmp;
+		for (let j = 0, jLength = clone.length - 1; j < jLength; j++) {
+			if (comparator(clone[j], clone[j + 1])) {
+				const tmp = clone[j];
+				clone[j] = clone[j + 1];
+				clone[j + 1] = tmp;
 				hasChange = true;
 			}
 
@@ -22,7 +26,7 @@ var generator = function* (array, comparator) {
 	}
 };
 
-var defaultComparator = function (itemA, itemB) {
+const defaultComparator = function defaultComparator(itemA, itemB) {
 	return itemA > itemB;
 };
 
@@ -34,7 +38,7 @@ module.exports = class BubbleSort {
 	}
 
 	compute() {
-		var genObj = generator(this._array, this._comparator);
+		const genObj = generator(this._array, this._comparator);
 
 		this._steps = [...genObj];
 	}
