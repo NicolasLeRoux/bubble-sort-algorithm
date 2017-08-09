@@ -4,7 +4,7 @@ var chai = require('chai'),
 
 chai.should();
 
-describe("TODO A", function () {
+describe("In the sort class,", function () {
 	var sort,
 		array = [1, 3, 6, 2, 5, 4];
 
