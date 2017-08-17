@@ -1,12 +1,20 @@
 <!doctype html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+
 	<title>Demo bubble-sort-algorithm</title>
+
 	<script src="index.js"></script>
 
 	<style>
+		h1 {
+			text-align: center;
+		}
+
 		#item-list {
 			display: flex;
+			margin: 5rem 5% 0 5%;
 		}
 
 		.item {
@@ -31,12 +39,44 @@
 		.selected .item-height {
 			background-color: red;
 		}
+
+		.actions {
+			margin: 1rem 5% 0 5%;
+		}
+
+		svg {
+			display: none;
+			width: 24px;
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
 	<h1>Demo bubble-sort-algorithm</h1>
 
+	<hr/>
+
 	<div id="item-list">
+	</div>
+
+	<div class="actions">
+		<button id="next-btn" type="button">Next</button>
+
+		<svg viewBox="0 0 24 24"
+			preserveAspectRatio="xMidYMid meet"
+			focusable="false">
+			<g>
+				<path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path>
+			</g>
+		</svg>
+
+		<svg viewBox="0 0 24 24"
+			preserveAspectRatio="xMidYMid meet"
+			focusable="false">
+			<g>
+				<path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
+			</g>
+		</svg>
 	</div>
 
 	<template id="item-tmpl">
@@ -45,9 +85,6 @@
 			<div class="item-height"></div>
 		</div>
 	</template>
-
-
-	<button id="next-btn">Next</button>
 
 	<script>
 		var showArray = function showArray(array, selected) {

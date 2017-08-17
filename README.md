@@ -14,5 +14,13 @@ simple, it is too slow and impractical for most problems even when compared to
 insertion sort. [more...](https://en.wikipedia.org/wiki/Bubble_sort) -- wikipedia
 
 
+## TODO
+
+- Show demo
+- API documentation
+- Improve UT
+- ...
+
+
 [travis-url]: https://travis-ci.org/NicolasLeRoux/bubble-sort-algorithm
 [travis-image]: https://travis-ci.org/NicolasLeRoux/bubble-sort-algorithm.svg?branch=master
